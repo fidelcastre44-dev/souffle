@@ -217,7 +217,7 @@ function lastEventsList(key) {
 }
 function catchupPrompt(key) {
   const now = Date.now();
-  const late = now > dayStart(key) + awakeMinutes(key) * 60000 * 0.8;
+  const late = now > keyDate(key) + (wakeMinFor(key) + awakeMinutes(key) * 0.8) * 60000;
   const done = data.days[key] && data.days[key].confirmed;
   if (!late || done) return '';
   return `<div class="card row-between"><span>Tu en as oublié aujourd’hui ?</span><button type="button" class="link" data-action="catchup" data-day="${key}">Vérifier</button></div>`;
